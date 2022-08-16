@@ -111,5 +111,3 @@ let arr = [87, 70, 100, 120];
   ![](https://velog.velcdn.com/images/kingmo/post/c923994d-bd43-4f1b-9c0d-1401e7420c56/image.png)
 
 > 출처 : https://www.inflearn.com/course/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B8%B0%EB%B3%B8
-
-.
