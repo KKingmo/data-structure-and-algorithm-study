@@ -1,7 +1,7 @@
-const showReturn = (callback) => console.log(callback);
+const showReturn = (callback) => console.log("callback", callback);
 
 // 강의를 듣지 않고 challenge
-const same0 = (arr1, arr2) => {
+const same1 = (arr1, arr2) => {
   let arr1Table = {};
   let arr2Table = {};
   for (let value of arr1) {
@@ -15,10 +15,10 @@ const same0 = (arr1, arr2) => {
   }
   return true;
 };
-showReturn(same0([1, 2, 3, 2], [9, 1, 4, 4]));
+showReturn(same1([1, 2, 3, 2], [9, 1, 4, 4]));
 
 // challenge without frequency counter
-function same1(arr1, arr2) {
+function same2(arr1, arr2) {
   if (arr1.length !== arr2.length) {
     return false;
   }
@@ -31,10 +31,10 @@ function same1(arr1, arr2) {
   }
   return true;
 }
-showReturn(same1([1, 2, 3, 2], [9, 1, 4, 4]));
+showReturn(same2([1, 2, 3, 2], [9, 1, 4, 4]));
 
 // Challenge using Frequency counter
-function same2(arr1, arr2) {
+function same3(arr1, arr2) {
   if (arr1.length !== arr2.length) {
     return false;
   }
@@ -56,4 +56,4 @@ function same2(arr1, arr2) {
   }
   return true;
 }
-showReturn(same2([1, 2, 3, 2], [9, 1, 4, 4]));
+showReturn(same3([1, 2, 3, 2], [9, 1, 4, 4]));
