@@ -1,4 +1,4 @@
-const showReturn = (callback) => console.log("callback", callback);
+const showReturn = (callback) => console.log(callback);
 
 // O(n^2) solution
 function sumZero1(arr) {

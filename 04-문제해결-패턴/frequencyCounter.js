@@ -1,4 +1,4 @@
-const showReturn = (callback) => console.log("callback", callback);
+const showReturn = (callback) => console.log(callback);
 
 // 강의를 듣지 않고 challenge
 const same1 = (arr1, arr2) => {

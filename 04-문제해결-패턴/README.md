@@ -1,8 +1,15 @@
 # 문제 해결 패턴
 
 - [문제 해결 패턴](#문제-해결-패턴)
+
   - [2. Frequency counter(빈도 카운터)](#2-frequency-counter빈도-카운터)
   - [3. Multiple Pointers(다중 포인터)](#3-multiple-pointers다중-포인터)
+
+  - Sliding Window
+  - Divide and Conquer
+  - Dynamic Programming
+  - Greedy Algorithms
+  - Backtracking
 
 ---
 
@@ -165,3 +172,61 @@
   >   - `countUniqueValues([]) // 0`
   >   - `countUniqueValues([-2,-1,-1,0,1]) // 4`
   > - [Challenge Code Link](./countUniqueValues.js)
+
+  - Challenge Code 설명
+
+    ```js
+    function countUniqueValues(arr) {
+      if (arr.length === 0) return 0;
+      let i = 0;
+      for (let j = 1; j < arr.length; j++) {
+        if (arr[i] !== arr[j]) {
+          i++;
+          arr[i] = arr[j];
+        }
+      }
+      return i + 1;
+    }
+    countUniqueValues([1, 1, 2, 3, 3, 4, 5, 6, 6, 7]);
+    ```
+
+    ```js
+    i
+    [1,1,2,3,3,4,5,6,6,7]
+      j -> move right
+    만약 i와 j가 다르다면 i의 index에 j를 넣고
+    i+1위치에서 다시 검사
+      i
+    [1,2,2,3,3,4,5,6,6,7]
+        j -> move right
+        i
+    [1,2,3,3,3,4,5,6,6,7]
+          j -> move right
+    ...loop
+    반복문이 끝날때는 아래와 같이 된다.
+                i
+    [1,2,3,4,5,6,7,6,6,7]
+                      j
+    i index의 위치까지 중복되지 않는 배열이기 때문에
+    고유한 값의 갯수는 i + 1이다.
+
+    경계조건 : 빈배열을 받았을 때 1을 return하게 되므로, 0을 return 하도록 예외처리한다.
+    ```
+
+---
+
+## 4. Sliding Window
+
+- 이 패턴은 배열이나 문자열과 같은 일련의 데이터를 입력하거나 특정 방식으로 연속적인 해당 데이터의 하위 집합을 찾는 경우에 유용하다.
+- 예를들면 `"hellothere"`의 가장 긴 연속하는 문자를 찾는 것과 같은 경우에 유용하다.
+
+- ### Challenge : maxSubarraySum
+  > - 배열과 숫자(n)를 인자로 받는 maxSubarraySum함수를 만든다.
+  > - 이 함수는 배열의 연속된 n개의 숫자들의 합 중 가장 큰 수를 반환한다.
+  > - 예시
+  >   - `maxSubarraySum([1,2,5,2,8,1,5],2) // 10`
+  >   - `maxSubarraySum([1,2,5,2,8,1,5],4) // 17`
+  >   - `maxSubarraySum([4,2,1,6],1) // 6`
+  >   - `maxSubarraySum([4,2,1,6,2],4) // 13`
+  >   - `maxSubarraySum([],4) // null`
+  > - [Challenge Code Link](./maxSubarraySum.js)
