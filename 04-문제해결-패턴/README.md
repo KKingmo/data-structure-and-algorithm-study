@@ -221,8 +221,9 @@
 - 예를들면 `"hellothere"`의 가장 긴 연속하는 문자를 찾는 것과 같은 경우에 유용하다.
 
 - ### Challenge : maxSubarraySum
+
   > - 배열과 숫자(n)를 인자로 받는 maxSubarraySum함수를 만든다.
-  > - 이 함수는 배열의 연속된 n개의 숫자들의 합 중 가장 큰 수를 반환한다.
+  > - 이 함수는 배열의 연속된 n개의 숫자들의 합 중에 가장 큰 수를 반환한다.
   > - 예시
   >   - `maxSubarraySum([1,2,5,2,8,1,5],2) // 10`
   >   - `maxSubarraySum([1,2,5,2,8,1,5],4) // 17`
@@ -230,3 +231,73 @@
   >   - `maxSubarraySum([4,2,1,6,2],4) // 13`
   >   - `maxSubarraySum([],4) // null`
   > - [Challenge Code Link](./maxSubarraySum.js)
+
+  - Challenge code 설명
+
+    ```js
+    const showReturn = (callback) => console.log(callback);
+
+    // 첫번째 방법 - O(n^2)
+    function maxSubarraySum1(arr, num) {
+      if (num > arr.length) {
+        return null;
+      }
+      // 배열이 모두 음수라면 가장 큰 합이 음수이기 결과의 초기값은 가장 작은 음수
+      let max = -Infinity;
+      // loop문이 i부터 연속된 num만큼의 요소를 더하기 때문에 loop는 배열의 마지막 인덱스 - num
+      for (let i = 0; i < arr.length - num + 1; i++) {
+        temp = 0;
+        for (let j = 0; j < num; j++) {
+          temp += arr[i + j];
+        }
+        if (temp > max) {
+          max = temp;
+        }
+      }
+      return max;
+    }
+    showReturn(maxSubarraySum1([2, 6, 9, 2, 1, 8, 5, 6, 3], 3));
+
+    // 두번째 방법(Sliding Window approach concept) - O(n)
+    function maxSubarraySum2(arr, num) {
+      let maxSum = 0;
+      let tempSum = 0;
+      if (arr.length < num) return null;
+      for (let i = 0; i < num; i++) {
+        maxSum += arr[i];
+      }
+      tempSum = maxSum;
+      for (let i = num; i < arr.length; i++) {
+        tempSum = tempSum - arr[i - num] + arr[i];
+        maxSum = Math.max(maxSum, tempSum);
+      }
+      return maxSum;
+    }
+    showReturn(maxSubarraySum2([2, 6, 9, 2, 1, 8, 5, 6, 3], 3));
+    ```
+
+    ```js
+    두번째 방법(Sliding Window 접근법)은 index를 1씩 올려가며 연속된 3개의 합을 계산하고 비교하는
+    첫번째 방법에서 중복된 계산을 수행하지 않게 개선한 방법이다.
+
+    maxSubarraySum2([2, 6, 9, 2, 1, 8, 5, 6, 3], 3) 함수는
+    첫번째 loop 에서 0번 인덱스의 연속된 3개 요소들의 합 2 + 6 + 9를 계산한 후 maxSum에 저장한다.
+
+    두번째 loop로 넘어가 1번 인덱스부터 마지막 인덱스까지 연속된 3개 요소들의 합을 구할 때,
+    첫 번째 방법은
+    1번 인덱스의 연속된 3개요소들의 합을 구하기 위해 순수하게 더해서 6 + 9 + 2를 계산하였지만
+
+    Sliding Window 접근법은 maxSum에 저장된 2 + 6 + 9의 값에서
+    맨 앞의 0번 인덱스 2를 빼고, 3번 인덱스 2를 더하여 연속된 3개요소들의 합 6 + 9 + 2를 구한다.
+
+    여기서 만약 연속된 3개의 수가 아닌 10,000개의 수의 합을 구한다고 했을 때
+
+    처음 0번 인덱스에서 연속된 10,000개 요소들의 합만을 구하고,
+    다음 1번 부터 마지막 인덱스까지는
+    합을 구하는 범위가 아닌 인덱스는 빼주고, 구해야 하는 범위인 인덱스는 더해주는
+    O(1)의 작업을 두 번만하여 계속해서 구할 수 있기 때문에 매우 효율적이다.
+    이말을 짧게 정리하자면 두 번째 방법은 합을 구할 때마다 O(1)의 작업이 2번 발생한다.
+
+    이에 비해 첫 번째 방법은 합을 구할 때마다 O(n)의 작업을 수행하기 때문에
+    이 상황에서는 계속해서 매 인덱스 마다 O(1)의 작업이 10,000번 발생한다.
+    ```
