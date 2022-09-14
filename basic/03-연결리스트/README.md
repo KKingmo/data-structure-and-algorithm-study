@@ -99,6 +99,6 @@
 
 ## 연결리스트와 추상자료형 구현
 
-- [Code Link](./dev/test.mjs)
+- [Code Link](../dev/test.mjs)
 
 ---
