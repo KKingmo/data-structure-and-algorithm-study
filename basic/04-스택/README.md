@@ -17,4 +17,6 @@
   - peek : 데이터 참조
   - isEmpty : 비었는지 체크
 - 구현
-  - [Code Link](../dev/test_stack.mjs)
+  - [연결리스트 구현 Code Link](../dev/LinkedList.mjs)
+  - [스택 구현 Code Link](../dev/stack.mjs)
+  - [구현 Test Code Link](../dev/test_stack.mjs)
