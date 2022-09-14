@@ -99,6 +99,7 @@
 
 ## 연결리스트와 추상자료형 구현
 
-- [Code Link](../dev/test.mjs)
+- [Node, 연결리스트 구현 Code Link](../dev/LinkedList.mjs)
+- [구현 Test Code Link](../dev/test.mjs)
 
 ---
