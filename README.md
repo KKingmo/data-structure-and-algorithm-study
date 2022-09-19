@@ -14,8 +14,8 @@
   - [해시 테이블(Hash table)](./basic/07-해시-테이블/README.md)
   - [셋(Set)](./basic/08-셋/README.md)
   - [재귀(Recursion)](./basic/09-재귀/README.md)
-  - [재귀적으로 생각하기]
-  - [재귀 - 하노이 탑]
+  - [재귀적으로 생각하기](./basic/10-재귀적으로-생각하기/README.md)
+  - [재귀 - 하노이 탑](./basic/11-재귀-하노이탑/README.md)
   - [정렬 - 버블정렬]
   - [정렬 - 선택정렬]
   - [정렬 - 삽입정렬]
