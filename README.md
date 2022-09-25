@@ -4,7 +4,8 @@
 
 ---
 
-- 자료구조와 알고리즘 기초
+- 자료구조와 알고리즘 기초  
+  (참고강의 : https://www.inflearn.com/course/자료구조-알고리즘-기본/)
   - [자료구조와 알고리즘](./basic/01-자료구조와-알고리즘/README.md)
   - [배열](./basic/02-배열/README.md)
   - [연결리스트(Linked list)](./basic/03-연결리스트/README.md)
